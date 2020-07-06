@@ -14,7 +14,14 @@ public class AplicacionCitas {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {  
+    public static void main(String[] args) {
+     String zorro:"Max";
+     String v:" eres Zorro?";
+     System.out.println(zorro+v) 
+     String PeladasJoel[]=["joyce","romina","dayana"];
+        for(i=0,i<10,i++){
+        print("las peladas de Joel son muchas")
+        }
         
     }
     
