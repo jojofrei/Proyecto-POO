@@ -18,10 +18,7 @@ public class AplicacionCitas {
      String zorro:"Max";
      String v:" eres Zorro?";
      System.out.println(zorro+v) 
-     String PeladasJoel[]=["joyce","romina","dayana"];
-        for(i=0,i<10,i++){
-        print("las peladas de Joel son muchas")
-        }
+     
         
     }
     
