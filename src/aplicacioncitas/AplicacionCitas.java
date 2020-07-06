@@ -15,7 +15,10 @@ public class AplicacionCitas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     
+     String zorro:"Max";
+     String v:" eres Zorro?";
+     System.out.println(zorro+v)   
+        
     }
     
 }
