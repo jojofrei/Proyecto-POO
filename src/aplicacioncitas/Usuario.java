@@ -60,4 +60,11 @@ public class Usuario {
     public boolean iniciarSesion(){
         return true;
     }
+    public boolean validarCorreo(){
+        return true;
+    }
+    
+    public boolean validarUsuario(){
+        return true;
+    }
 }
