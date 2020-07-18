@@ -1,0 +1,39 @@
+Abogado	
+Médico cirujano
+Ingeniero	
+Historiador
+Biólogo	
+Matemático	
+Arquitecto
+Profesor	
+Periodista
+Físico	
+Sociólogo
+Químico	
+Politólogo
+Electricista	
+Bibliotecólogo
+Técnico de sonido	
+Archivólogo
+Filósofo	
+Secretaria
+Antropólogo	
+Técnico en turismo
+Administrador	
+Lingüista
+Contador	
+Psicoanalista
+Arqueólogo	
+Enfermero
+Paleontólogo	
+Paramédico
+Geógrafo	
+Músico
+Psicólogo	
+Computista	
+Economista
+Radiólogo
+Farmacólogo	
+Ecólogo
+
+

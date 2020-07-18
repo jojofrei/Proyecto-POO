@@ -12,18 +12,32 @@ import java.util.ArrayList;
  * @author jojofrei
  */
 public class Perfil {
+    private Usuario user;
     private String genero;
     private String profesion;
-    private ArrayList<String> profesiones;
-    private ArrayList<String> intereses;
+    private ArrayList<String> interesesuser;
     private ArrayList<String> perfiles;
+    private ArrayList<Respuesta> respuestasuser;
+    
 
-    public Perfil(String genero, String profesion) {
+    public Perfil(Usuario user, String genero, String profesion) {
+        this.user=user;
         this.genero = genero;
         this.profesion = profesion;
+        this.interesesuser=new ArrayList();
+        this.perfiles=new ArrayList();
+        this.respuestasuser=new ArrayList();
+        
     }
 
-    
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
     public String getGenero() {
         return genero;
     }
@@ -38,22 +52,15 @@ public class Perfil {
 
     public void setProfesion(String profesion) {
         this.profesion = profesion;
+    
     }
 
-    public ArrayList<String> getProfesiones() {
-        return profesiones;
+    public ArrayList<String> getInteresesUser() {
+        return interesesuser;
     }
 
-    public void setProfesiones(ArrayList<String> profesiones) {
-        this.profesiones = profesiones;
-    }
-
-    public ArrayList<String> getIntereses() {
-        return intereses;
-    }
-
-    public void setIntereses(ArrayList<String> intereses) {
-        this.intereses = intereses;
+    public void setInteresesUser(ArrayList<String> intereses) {
+        this.interesesuser = intereses;
     }
 
     public ArrayList<String> getPerfiles() {
@@ -63,19 +70,19 @@ public class Perfil {
     public void setPerfiles(ArrayList<String> perfiles) {
         this.perfiles = perfiles;
     }
+
+    public ArrayList<Respuesta> getRespuestasUser() {
+        return respuestasuser;
+    }
+
+    public void setRespuestasUser(ArrayList<Respuesta> respuestasUser) {
+        this.respuestasuser = respuestasuser;
+    }
     
     public void buscarPareja(){
         
     }
-    
-    public boolean validarProfesion(){
-        return true;
-        
-    }
-    
-    public boolean validarInteres(){
-        return true;
-    }
+
     
     public String toString(){
         return null;
