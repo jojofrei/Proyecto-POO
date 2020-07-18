@@ -18,7 +18,7 @@ public class AplicacionCitas {
       Usuario u = new Usuario();
       u.crearUsuario();
       
-      
+        System.out.println(u.informacion);
         
         
      

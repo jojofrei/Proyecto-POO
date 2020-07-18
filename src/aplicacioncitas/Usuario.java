@@ -61,8 +61,15 @@ public class Usuario {
     public boolean iniciarSesion(){
         return true;
     }
-    public boolean validarCorreo(){
-        return true;
+    public boolean validarCorreo(String email){
+        if(informacion.contains((email))){
+            String mensaje =("El correo ya existe");
+            return true;
+        }
+        else{
+            String mensaje =("El correo no existe");
+            return false;
+        }
     }
     
     public boolean validarUsuario(){
@@ -73,14 +80,17 @@ public class Usuario {
     public void crearUsuario(){
         System.out.println("Ingrese Email:");
         email=S.nextLine();
+        informacion.add(email);
+        validarCorreo(email);
         System.out.println("Ingrese nombre:");
         nombre= S.nextLine();
+        informacion.add(nombre);
         System.out.println("Ingrese Fecha de nacimiento:");
         fechaNacimiento = S.nextLine();
+        informacion.add(fechaNacimiento);
         System.out.println("Ingrese contrasena:");
-        contrasena= S.nextLine();      
+        contrasena= S.nextLine();
+        informacion.add(contrasena);
     }
-    
-    
 }
 
