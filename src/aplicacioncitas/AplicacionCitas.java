@@ -19,6 +19,7 @@ public class AplicacionCitas {
 
 
     public static void main(String[] args) {
+
        
        boolean c=true;
         while (c){
@@ -60,6 +61,15 @@ public class AplicacionCitas {
             Scanner respuesta = new Scanner(System.in);
             String answer = respuesta.nextLine();
         }
+
+      Usuario u = new Usuario();
+      u.crearUsuario();
+      
+        System.out.println(u.informacion);
+        
+        
+     
+
         
         //Perfil.respuestasuser.add();  //Agregar usuario
 

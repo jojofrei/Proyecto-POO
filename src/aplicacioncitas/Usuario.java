@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package aplicacioncitas;
-
+import java.util.Scanner;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,15 +15,15 @@ import java.util.Date;
 public class Usuario {
     private String email;
     private String nombre;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String contrasena;
 
-    public Usuario(String email, String nombre, Date fechaNacimiento, String contrasena) {
+    /*public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
         this.email = email;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.contrasena = contrasena;
-    }
+    }*/
 
     
     public String getEmail() {
@@ -41,11 +42,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -60,11 +61,36 @@ public class Usuario {
     public boolean iniciarSesion(){
         return true;
     }
-    public boolean validarCorreo(){
-        return true;
+    public boolean validarCorreo(String email){
+        if(informacion.contains((email))){
+            String mensaje =("El correo ya existe");
+            return true;
+        }
+        else{
+            String mensaje =("El correo no existe");
+            return false;
+        }
     }
     
     public boolean validarUsuario(){
         return true;
     }
+    ArrayList informacion = new ArrayList<> ();
+    Scanner S=new Scanner(System.in);
+    public void crearUsuario(){
+        System.out.println("Ingrese Email:");
+        email=S.nextLine();
+        informacion.add(email);
+        validarCorreo(email);
+        System.out.println("Ingrese nombre:");
+        nombre= S.nextLine();
+        informacion.add(nombre);
+        System.out.println("Ingrese Fecha de nacimiento:");
+        fechaNacimiento = S.nextLine();
+        informacion.add(fechaNacimiento);
+        System.out.println("Ingrese contrasena:");
+        contrasena= S.nextLine();
+        informacion.add(contrasena);
+    }
 }
+
