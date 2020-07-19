@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package aplicacioncitas;
 
-/**
- *
- * @author jojofrei
- */
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+
+
 public class Mensaje {
+    ArrayList<Usuario> usuarios;
     private String mensaje;
     private Usuario emisor;
-    private Usuario receptor;
+    //private Usuario receptor;
+    
 
     public String getMensaje() {
         return mensaje;
@@ -30,14 +30,22 @@ public class Mensaje {
         this.emisor = emisor;
     }
 
-    public Usuario getReceptor() {
-        return receptor;
-    }
-
-    public void setReceptor(Usuario receptor) {
-        this.receptor = receptor;
-    }
     
+    public void enviarmensaje(Usuario receptor ){
+      int tamanoList= usuarios.size();
+      Scanner teclado= new Scanner (System.in);
+      int indicev ;
+    for(int i=0;i<=tamanoList;i++){
+        System.out.println((i+1)+" "+usuarios.get(i));
+    }
+      indicev= teclado.nextInt()-1;
+      mensaje=JOptionPane.showInputDialog("Ingrese mensaje:");
+      //el mensaje lo ingresamos directamente a la lista mensajes en usuario
+      receptor.mensajes.set(indicev, mensaje);
+      
+    
+    }
+  
     
     
     

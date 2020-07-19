@@ -13,10 +13,11 @@ import java.util.ArrayList;
  * @author jojofrei
  */
 public class Usuario {
-    private String email;
-    private String nombre;
-    private String fechaNacimiento;
-    private String contrasena;
+    protected String email;
+    protected String nombre;
+    protected String fechaNacimiento;
+    protected String contrasena;
+    public ArrayList<String> mensajes;
 
     /*public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
         this.email = email;
