@@ -58,7 +58,7 @@ public class ListaRespuesta extends ArrayList {
         this.respuesta.add("1.Confianza");
 	this.respuesta.add("2.Honestidad");
 	this.respuesta.add("3.Respeto");
-        this.respuesta.add("3.Todas las anteriores");
+        this.respuesta.add("4.Todas las anteriores");
 	break;
 				
 	case 5:
