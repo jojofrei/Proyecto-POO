@@ -7,24 +7,29 @@ package aplicacioncitas;
 import java.util.Scanner;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author jojofrei
  */
 public class Usuario {
-    protected String email;
-    protected String nombre;
-    protected String fechaNacimiento;
-    protected String contrasena;
-    public ArrayList<String> mensajes;
-
-    /*public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
+    private String email;
+    private String nombre;
+    private String fechaNacimiento;
+    private String contrasena;
+    ArrayList<String> informacion = new ArrayList<>();
+    public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
         this.email = email;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.contrasena = contrasena;
-    }*/
+    }
+    
+    public Usuario(){
+        
+    }
 
     
     public String getEmail() {
@@ -63,26 +68,50 @@ public class Usuario {
         return true;
     }
     public boolean validarCorreo(String email){
-        if(informacion.contains((email))){
-            String mensaje =("El correo ya existe");
-            return true;
+        boolean validacion=true;
+        String emailPattern = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@" +
+        "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        while(validacion!=false){
+        if (email != null) {
+          Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+  
+               for(String str : informacion){
+                   if(str.equals(email.toString())){
+                        validacion=true;
+                   }
+                   else {
+                       System.out.println("Email no valido");
+                       System.out.println("Ingrese otra vez");
+                       validacion=false;
+                   }
+                }
+            }
+         }
+         else {
+            System.out.println("NO Válido");
+            System.out.println("ingrese otra vez");
+            validacion=false;
+           
+            } 
         }
-        else{
-            String mensaje =("El correo no existe");
-            return false;
+        return validacion;
         }
-    }
+    
+        
+    
     
     public boolean validarUsuario(){
         return true;
     }
-    ArrayList informacion = new ArrayList<> ();
+    
     Scanner S=new Scanner(System.in);
     public void crearUsuario(){
         System.out.println("Ingrese Email:");
         email=S.nextLine();
-        informacion.add(email);
         validarCorreo(email);
+        informacion.add(email);
         System.out.println("Ingrese nombre:");
         nombre= S.nextLine();
         informacion.add(nombre);
@@ -94,4 +123,5 @@ public class Usuario {
         informacion.add(contrasena);
     }
 }
+       
 
