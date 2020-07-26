@@ -13,21 +13,16 @@ import java.util.ArrayList;
  */
 public class Perfil {
     private Usuario user;
-    private String genero;
-    private String profesion;
     private ArrayList<String> interesesuser;
-    private ArrayList<String> perfiles;
-    private ArrayList<Respuesta> respuestasuser;
+    private ArrayList<Perfil> perfiles;
+    private ArrayList<String> respuestasuser;
     
 
-    public Perfil(Usuario user, String genero, String profesion) {
+    public Perfil(Usuario user) {
         this.user=user;
-        this.genero = genero;
-        this.profesion = profesion;
         this.interesesuser=new ArrayList();
-        this.perfiles=new ArrayList();
-        this.respuestasuser=new ArrayList();
-        
+        this.respuestasuser=new ArrayList(); 
+        this.perfiles = new ArrayList();
     }
 
     public Usuario getUser() {
@@ -38,23 +33,6 @@ public class Perfil {
         this.user = user;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getProfesion() {
-        return profesion;
-    }
-
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
-    
-    }
-
     public ArrayList<String> getInteresesUser() {
         return interesesuser;
     }
@@ -63,27 +41,43 @@ public class Perfil {
         this.interesesuser = intereses;
     }
 
-    public ArrayList<String> getPerfiles() {
+    public ArrayList<Perfil> getPerfiles() {
         return perfiles;
     }
 
-    public void setPerfiles(ArrayList<String> perfiles) {
+    public void setPerfiles(ArrayList<Perfil> perfiles) {
         this.perfiles = perfiles;
     }
 
-    public ArrayList<Respuesta> getRespuestasUser() {
+    public ArrayList<String> getRespuestasUser() {
         return respuestasuser;
     }
 
-    public void setRespuestasUser(ArrayList<Respuesta> respuestasUser) {
+    public void setRespuestasUser(ArrayList<String> respuestasUser) {
         this.respuestasuser = respuestasuser;
     }
     
-    public void buscarPareja(){
-        
+    public void buscarPareja(Perfil p){
+        int i = 0;
+        int c = 0;
+        for(String interes: p.getInteresesUser()){
+            if(interesesuser.contains(interes)){
+                i++;
+            }
+        }
+        for(int j=0; j<p.getRespuestasUser().size(); j++){
+            String r1 = p.getRespuestasUser().get(j);
+            String r2 = this.getRespuestasUser().get(j);
+            if(r1.equals(r2)){
+                c++;
+            }
+        }
+        if(i>=2 && c>=4){
+            p.getPerfiles().add(this);
+            this.perfiles.add(p);
+        }
     }
 
-    
     public String toString(){
         return null;
         

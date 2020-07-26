@@ -71,6 +71,11 @@ public class Usuario {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + '}';
+    }
     
     public boolean validarUsuario(){
         return true;
@@ -92,5 +97,6 @@ public class Usuario {
         contrasena= S.nextLine();
         informacion.add(contrasena);
     }
+   
 }
 

@@ -14,67 +14,57 @@ import java.util.Scanner;
  * @author jojofrei
  */
 public class AplicacionCitas {
-    static ArrayList<String> profesiones = readFromFile("/Users/jojofrei/NetBeansProjects/AplicacionCitas/src/archivostexto/profesiones.txt");
+    //static ArrayList<String> profesiones = readFromFile("/Users/jojofrei/NetBeansProjects/AplicacionCitas/src/archivostexto/profesiones.txt");
     static ArrayList<String> interes = readFromFile("/Users/jojofrei/NetBeansProjects/AplicacionCitas/src/archivostexto/intereses.txt");
-
-
+    static ArrayList<Perfil> allperfil = new ArrayList<>();
+    
     public static void main(String[] args) {
+        Pregunta.llenarDatos();
+        Perfil p1 = generarPerfil();
+        Perfil p2 = generarPerfil();
+        allperfil.add(p1);
+        allperfil.add(p2);
+        llenarListas(p1);
+        llenarListas(p2);
+        for(int i=0; i<allperfil.size(); i++){
+            Perfil pr1 = allperfil.get(i);
+            for(int j=i+1; j<allperfil.size(); j++){
+                Perfil pr2 = allperfil.get(j);
+                pr1.buscarPareja(pr2);  
+            }
+        }
+        for(Perfil p :p1.getPerfiles()){
+            System.out.println(p.getUser().toString());
+        }
+    }
 
-       
-       boolean c=true;
-        while (c){
-           System.out.println("Elija su profesión: ");
-           /*for(String str: profesiones){
-               System.out.println(str);
-           }*/
-           Scanner respuesta = new Scanner(System.in);
-           String profesion = respuesta.nextLine();
-           if(profesiones.contains(profesion)){
-               c=false;
-               
-           }
-           else{
-               System.out.println("Profesión no encontrada");
-           }
-           for(String str: interes){
+    public static Perfil generarPerfil(){
+        Usuario user = new Usuario();
+        user.crearUsuario();
+        Perfil p = new Perfil(user);
+        return p;
+    }
+    
+    public static void llenarListas(Perfil p){
+        Scanner respuesta = new Scanner(System.in);
+        for(String str: interes){
                System.out.println(str);
            }
-                    
            System.out.println("Elija sus intereses: ");
            for(int i=0; i<3; i++){
                String interes = respuesta.nextLine();
-  
+               p.getInteresesUser().add(interes);
            }
-       }
-       
-        Pregunta p1 = new Pregunta();
-        System.out.println("Respuesta: ");
-        for(String p:p1.getPreguntas()){
-            System.out.println(p);
-            int i=p1.getIndice(p);
-            ListaRespuesta r1= new ListaRespuesta(i);
-            
-            
-            for(String r :r1.getRespuestas()){
+
+        for(Pregunta preg:Pregunta.preguntas){
+            System.out.println(preg.getPregunta());
+
+            for(String r :preg.getRespuestas()){
                 System.out.println(r);    
             }  
-            Scanner respuesta = new Scanner(System.in);
+            System.out.println("Respuesta: ");
             String answer = respuesta.nextLine();
+            p.getRespuestasUser().add(answer);
         }
-
-      Usuario u = new Usuario();
-      u.crearUsuario();
-      
-        System.out.println(u.informacion);
-        
-        
-     
-
-        
-        //Perfil.respuestasuser.add();  //Agregar usuario
-
-     
-   
     }
-    
 }
