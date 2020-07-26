@@ -28,12 +28,6 @@ public class Usuario {
     
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, String fechaNacimiento, String contrasena) {
-
-    ArrayList<String> informacion = new ArrayList<>();
-    
-    
-    
-    public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
         this.email = email;
         this.nombre = nombre;
         this.genero=genero;
@@ -42,11 +36,13 @@ public class Usuario {
         this.tipoUsuario=tipoUsuario;
         this.tarjeta=tarjeta;
         this.fechCaducidad=fechCaducidad;
+    
     }
     
     public Usuario(){
         
     }
+
     public String getEmail() {
         return email;
     }
@@ -84,7 +80,6 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
     public boolean validarUsuario(){
         boolean validacion=true;
         Scanner S=new Scanner(System.in);
@@ -101,6 +96,37 @@ public class Usuario {
                 validacion=false;
                 break;
             }
+        }
+        return validacion;
+    }
+    public boolean validarCorreo(String email){
+        boolean validacion=true;
+        String emailPattern = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@" +
+        "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        while(validacion!=false){
+        if (email != null) {
+          Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+  
+               for(String str : informacion){
+                   if(str.equals(email.toString())){
+                        validacion=true;
+                   }
+                   else {
+                       System.out.println("Email no valido");
+                       System.out.println("Ingrese otra vez");
+                       validacion=false;
+                   }
+                }
+            }
+         }
+         else {
+            System.out.println("NO Válido");
+            System.out.println("ingrese otra vez");
+            validacion=false;
+           
+            } 
         }
         return validacion;
     }
@@ -141,7 +167,11 @@ public class Usuario {
             contrasena= S.nextLine();
             informacion.add(contrasena);
         }
+        
     }
+    
+        
+    
     
     public void iniciarSesion(){
         System.out.println("Bienvenidos al programa de citas");
@@ -159,6 +189,7 @@ public class Usuario {
             switch(opcion){
                 case 1:
                     crearUsuario();
+                    System.out.println(informacion);
                     break;
                 case 2:
                     break;
@@ -180,8 +211,10 @@ public class Usuario {
    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
    while (validacion == true){
         Scanner S=new Scanner(System.in);
+        
         System.out.println("Ingrese Email:");
         email=S.nextLine();
+        
         Matcher mather = pattern.matcher(email);
         if(mather.find()){
             if(informacion.contains(email.toString())){
@@ -194,21 +227,14 @@ public class Usuario {
                 validacion=false;
                 break;
             }
-        }else{
+        }
+        else{
             System.out.println("Ingrese Email de nuevo");
         }
+   }
+  
     Scanner S=new Scanner(System.in);
-    public void crearUsuario(){
-        Scanner S=new Scanner(System.in);
-        ValidarMail();
-        validarUsuario();
-        System.out.println("Ingrese Fecha de nacimiento:");
-        fechaNacimiento = S.nextLine();
-        informacion.add(fechaNacimiento);
-        System.out.println("Ingrese contrasena:");
-        contrasena= S.nextLine();
-        informacion.add(contrasena);
-    }
+    
     return validacion;
     }
  public void validarGenero(){
@@ -225,36 +251,8 @@ public class Usuario {
     }   
  }
     
-    public void iniciarSesion(){
-        System.out.println("Bienvenidos al programa de citas");
-        boolean salir=false;
-        int opcion;
-        while(!salir){
-            System.out.println("1.Crear usuario:");
-            System.out.println("2.Iniciar sesion:");
-            System.out.println("3.Salir");
-            
-            System.out.println("Escriba una opcion");
-            opcion=S.nextInt();
-            
-            switch(opcion){
-                case 1:
-                    crearUsuario();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    salir=true;
-                    break;
-                default:
-                    System.out.println("solo numero entre 1 y 3 ");
-                    
-            }
-        }
-           
-        
-    }
-  public boolean ValidarMail() {
+   
+  /*public boolean ValidarMail() {
     // Patron para validar el email
    boolean validacion=true;
    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -279,10 +277,10 @@ public class Usuario {
         }
     }
     return validacion;
-    }
-    
+    }*/
     
 }
+       
 
        
 
