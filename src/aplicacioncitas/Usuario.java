@@ -19,15 +19,35 @@ public class Usuario {
     private String nombre;
     private String fechaNacimiento;
     private String contrasena;
+<<<<<<< HEAD
+    private String genero;
+    private String tipoUsuario;
+    private String tarjeta;
+    private String fechCaducidad;
+    ArrayList<String> informacion = new ArrayList<>();
+    
+    
+    
+    public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, String fechaNacimiento, String contrasena) {
+=======
     ArrayList<String> informacion = new ArrayList<>();
     
     
     
     public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
+>>>>>>> origin/master
         this.email = email;
         this.nombre = nombre;
+        this.genero=genero;
         this.fechaNacimiento = fechaNacimiento;
         this.contrasena = contrasena;
+<<<<<<< HEAD
+        this.tipoUsuario=tipoUsuario;
+        this.tarjeta=tarjeta;
+        this.fechCaducidad=fechCaducidad;
+        
+=======
+>>>>>>> origin/master
     }
     
     public Usuario(){
@@ -38,6 +58,13 @@ public class Usuario {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getNombre() {
@@ -82,8 +109,105 @@ public class Usuario {
             }
         }
         return validacion;
+<<<<<<< HEAD
     }
     
+    Scanner S=new Scanner(System.in);
+    public void crearUsuario(){
+        Scanner S=new Scanner(System.in);
+        ValidarMail();
+        validarUsuario();
+        validarGenero();
+        UsuarioPremium up=new UsuarioPremium();
+        System.out.println("Ingrese tipo de usuario:");
+        tipoUsuario=S.nextLine().toLowerCase();
+        if(tipoUsuario=="standard".toLowerCase()){
+            informacion.add(tipoUsuario);
+            System.out.println("Ingrese tarjeta de credito");
+            up.setTarjetaCredito(tipoUsuario);
+            informacion.add(tipoUsuario);
+            System.out.println("Ingrese fecha de caducidad:");
+            System.out.println("Ingrese Fecha de nacimiento:");
+            fechaNacimiento = S.nextLine();
+            informacion.add(fechaNacimiento);
+            System.out.println("Ingrese contrasena:");
+            contrasena= S.nextLine();
+            informacion.add(contrasena);
+            }
+        else{
+            System.out.println("Ingrese tarjeta de credito");
+            tarjeta=S.nextLine();
+            informacion.add(tarjeta);
+            System.out.println("Ingrese fecha de caducidad:");
+            fechCaducidad=S.nextLine();
+            informacion.add(fechCaducidad);
+            System.out.println("Ingrese Fecha de nacimiento:");
+            fechaNacimiento = S.nextLine();
+            informacion.add(fechaNacimiento);
+            System.out.println("Ingrese contrasena:");
+            contrasena= S.nextLine();
+            informacion.add(contrasena);
+        }
+=======
+>>>>>>> origin/master
+    }
+    
+<<<<<<< HEAD
+    public void iniciarSesion(){
+        System.out.println("Bienvenidos al programa de citas");
+        boolean salir=false;
+        int opcion;
+        
+        while(!salir){
+            System.out.println("1.Crear usuario:");
+            System.out.println("2.Iniciar sesion:");
+            System.out.println("3.Salir");
+            
+            System.out.println("Escriba una opcion");
+            opcion=S.nextInt();
+            
+            switch(opcion){
+                case 1:
+                    crearUsuario();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("solo numero entre 1 y 3 ");
+                    
+            }
+        }
+           
+        
+    }
+    
+  public boolean ValidarMail() {
+    // Patron para validar el email
+   boolean validacion=true;
+   Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+   while (validacion == true){
+        Scanner S=new Scanner(System.in);
+        System.out.println("Ingrese Email:");
+        email=S.nextLine();
+        Matcher mather = pattern.matcher(email);
+        if(mather.find()){
+            if(informacion.contains(email.toString())){
+               System.out.println("Email no valido");
+               System.out.println("Ingrese otra vez");
+               validacion=true;
+            }
+            else {
+                informacion.add(email);
+                validacion=false;
+                break;
+            }
+        }else{
+            System.out.println("Ingrese Email de nuevo");
+        }
+=======
     Scanner S=new Scanner(System.in);
     public void crearUsuario(){
         Scanner S=new Scanner(System.in);
@@ -95,7 +219,25 @@ public class Usuario {
         System.out.println("Ingrese contrasena:");
         contrasena= S.nextLine();
         informacion.add(contrasena);
+>>>>>>> origin/master
     }
+<<<<<<< HEAD
+    return validacion;
+    }
+ public void validarGenero(){
+    Scanner S=new Scanner(System.in);
+    System.out.println("Que genero es:");
+    genero=S.nextLine().toUpperCase();
+    if(genero=="masculino".toUpperCase()){
+        informacion.add(genero);
+        
+    }
+    else{
+        genero="femenino";
+        informacion.add(genero);
+    }   
+ }
+=======
     
     public void iniciarSesion(){
         System.out.println("Bienvenidos al programa de citas");
@@ -153,6 +295,7 @@ public class Usuario {
     return validacion;
     }
  
+>>>>>>> origin/master
     
     
 }
