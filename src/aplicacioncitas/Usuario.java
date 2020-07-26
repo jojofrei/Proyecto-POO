@@ -250,35 +250,6 @@ public class Usuario {
         informacion.add(genero);
     }   
  }
-    
-   
-  /*public boolean ValidarMail() {
-    // Patron para validar el email
-   boolean validacion=true;
-   Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-   while (validacion == true){
-        Scanner S=new Scanner(System.in);
-        System.out.println("Ingrese Email:");
-        email=S.nextLine();
-        Matcher mather = pattern.matcher(email);
-        if(mather.find()){
-            if(informacion.contains(email.toString())){
-               System.out.println("Email no valido");
-               System.out.println("Ingrese otra vez");
-               validacion=true;
-            }
-            else {
-                informacion.add(email);
-                validacion=false;
-                break;
-            }
-        }else{
-            System.out.println("Ingrese Email de nuevo");
-        }
-    }
-    return validacion;
-    }*/
-    
 }
        
 
