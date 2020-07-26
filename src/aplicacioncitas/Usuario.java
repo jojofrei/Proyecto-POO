@@ -19,7 +19,6 @@ public class Usuario {
     private String nombre;
     private String fechaNacimiento;
     private String contrasena;
-<<<<<<< HEAD
     private String genero;
     private String tipoUsuario;
     private String tarjeta;
@@ -29,25 +28,20 @@ public class Usuario {
     
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, String fechaNacimiento, String contrasena) {
-=======
+
     ArrayList<String> informacion = new ArrayList<>();
     
     
     
     public Usuario(String email, String nombre, String fechaNacimiento, String contrasena) {
->>>>>>> origin/master
         this.email = email;
         this.nombre = nombre;
         this.genero=genero;
         this.fechaNacimiento = fechaNacimiento;
         this.contrasena = contrasena;
-<<<<<<< HEAD
         this.tipoUsuario=tipoUsuario;
         this.tarjeta=tarjeta;
         this.fechCaducidad=fechCaducidad;
-        
-=======
->>>>>>> origin/master
     }
     
     public Usuario(){
@@ -109,7 +103,6 @@ public class Usuario {
             }
         }
         return validacion;
-<<<<<<< HEAD
     }
     
     Scanner S=new Scanner(System.in);
@@ -148,11 +141,8 @@ public class Usuario {
             contrasena= S.nextLine();
             informacion.add(contrasena);
         }
-=======
->>>>>>> origin/master
     }
     
-<<<<<<< HEAD
     public void iniciarSesion(){
         System.out.println("Bienvenidos al programa de citas");
         boolean salir=false;
@@ -207,7 +197,6 @@ public class Usuario {
         }else{
             System.out.println("Ingrese Email de nuevo");
         }
-=======
     Scanner S=new Scanner(System.in);
     public void crearUsuario(){
         Scanner S=new Scanner(System.in);
@@ -219,9 +208,7 @@ public class Usuario {
         System.out.println("Ingrese contrasena:");
         contrasena= S.nextLine();
         informacion.add(contrasena);
->>>>>>> origin/master
     }
-<<<<<<< HEAD
     return validacion;
     }
  public void validarGenero(){
@@ -237,7 +224,6 @@ public class Usuario {
         informacion.add(genero);
     }   
  }
-=======
     
     public void iniciarSesion(){
         System.out.println("Bienvenidos al programa de citas");
@@ -294,8 +280,6 @@ public class Usuario {
     }
     return validacion;
     }
- 
->>>>>>> origin/master
     
     
 }
