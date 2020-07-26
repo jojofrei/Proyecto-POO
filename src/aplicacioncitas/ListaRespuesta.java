@@ -13,64 +13,53 @@ import java.util.ArrayList;
  */
 public class ListaRespuesta extends ArrayList {
     private int bloque = 1;
-    private ArrayList<String> respuesta = new ArrayList();
     
     public ListaRespuesta(int bloque){
         super(5);
 	this.bloque = bloque;
 	generaLista();
     }
-    
-    public ListaRespuesta(){
-        super(5);
-	generaLista();
-    }
-    
-   
-    
+
     public void generaLista() {
         
         switch(bloque) {
 	// Aqui van las respuestas
         case 0:
-	this.respuesta.add("1.Salir a comer");
-	this.respuesta.add("2.Ver peliculas");
-        this.respuesta.add("3.Hacer ejercicios");
+	this.add("1.Salir a comer");
+	this.add("2.Ver peliculas");
+        this.add("3.Hacer ejercicios");
 	break;
 				
 	case 1:
-	this.respuesta.add("1.Politica");
-	this.respuesta.add("2.Educación");
-	this.respuesta.add("3.Pasatiempos");
+	this.add("1.Politica");
+	this.add("2.Educación");
+	this.add("3.Pasatiempos");
 	break;
 				
 	case 2:
-        this.respuesta.add("1.Si");
-	this.respuesta.add("2.No");
+        this.add("1.Si");
+	this.add("2.No");
         break;
 				
 	case 3:
-	this.respuesta.add("1.Si");
-	this.respuesta.add("2.No");
+	this.add("1.Si");
+	this.add("2.No");
 	break;
 				
 	case 4:
-        this.respuesta.add("1.Confianza");
-	this.respuesta.add("2.Honestidad");
-	this.respuesta.add("3.Respeto");
-        this.respuesta.add("4.Todas las anteriores");
+        this.add("1.Confianza");
+	this.add("2.Honestidad");
+	this.add("3.Respeto");
+        this.add("3.Todas las anteriores");
 	break;
 				
 	case 5:
-        this.respuesta.add("1.En español");
-	this.respuesta.add("2.En inglés");
-	this.respuesta.add("3.Ambas");
+        this.add("1.En español");
+	this.add("2.En inglés");
+	this.add("3.Ambas");
 	break;
 	}
     }
     
-    public ArrayList<String> getRespuestas(){
-        return this.respuesta;
-    }
   
 }
