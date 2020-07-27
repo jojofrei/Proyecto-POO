@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,31 +10,29 @@
  */
 package aplicacioncitas;
 import java.util.Scanner;
-import java.util.Date;
+//import java.util.Date;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
  * @author jojofrei
  */
 public class Usuario {
-    protected String email;
-    protected String nombre;
-    protected String fechaNacimiento;
-    protected String contrasena;
-    protected String genero;
-    protected String tipoUsuario;
-    protected String tarjeta;
-    protected String fechCaducidad;
-    protected ArrayList<String> informacion = new ArrayList<>();
-    protected ArrayList<Usuario> usuariosI = new ArrayList<>();
-    protected ArrayList<String> mensajes = new ArrayList<>();
+    private String email;
+    private String nombre;
+    private int fechaNacimiento;
+    private String contrasena;
+    private String genero;
+    private String tipoUsuario;
+    private String tarjeta;
+    private String fechCaducidad;
+    ArrayList<String> informacion = new ArrayList<>();
     
-    
-    
-    public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, String fechaNacimiento, String contrasena) {
+    public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, int fechaNacimiento, String contrasena) {
         this.email = email;
         this.nombre = nombre;
         this.genero=genero;
@@ -68,11 +70,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getFechaNacimiento() {
+    public int getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(int fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -83,6 +85,8 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+    
+    // ESTE METODO NO VA A PERMITIR QUE NINGUN NOMBRE DE USUARIO SE REPITA 
     public boolean validarUsuario(){
         boolean validacion=true;
         Scanner S=new Scanner(System.in);
@@ -102,92 +106,68 @@ public class Usuario {
         }
         return validacion;
     }
-    public boolean validarCorreo(String email){
-        boolean validacion=true;
-        String emailPattern = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@" +
-        "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
-        Pattern pattern = Pattern.compile(emailPattern);
-        while(validacion!=false){
-        if (email != null) {
-          Matcher matcher = pattern.matcher(email);
-            if (matcher.matches()) {
-  
-               for(String str : informacion){
-                   if(str.equals(email.toString())){
-                        validacion=true;
-                   }
-                   else {
-                       System.out.println("Email no valido");
-                       System.out.println("Ingrese otra vez");
-                       validacion=false;
-                   }
-                }
-            }
-         }
-         else {
-            System.out.println("NO Válido");
-            System.out.println("ingrese otra vez");
-            validacion=false;
-           
-            } 
-        }
-        return validacion;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + '}';
-    }
-
     
     
+ 
     Scanner S=new Scanner(System.in);
+    
+    //ESTE METODO SE VA A ENCARGAR DE CREAR EL USUARIO, QUE PUEDE SER PREMIUM Y STANDARD
     public void crearUsuario(){
         Scanner S=new Scanner(System.in);
-        ValidarMail();
-        validarUsuario();
-        validarGenero();
-        UsuarioPremium up=new UsuarioPremium();
-        System.out.println("Ingrese tipo de usuario:");
-        tipoUsuario=S.nextLine().toLowerCase();
-        if(tipoUsuario=="standard".toLowerCase()){
-            informacion.add(tipoUsuario);
-            System.out.println("Ingrese tarjeta de credito");
-            up.setTarjetaCredito(tipoUsuario);
-            informacion.add(tipoUsuario);
-            System.out.println("Ingrese fecha de caducidad:");
-            System.out.println("Ingrese Fecha de nacimiento:");
-            fechaNacimiento = S.nextLine();
-            informacion.add(fechaNacimiento);
-            System.out.println("Ingrese contrasena:");
-            contrasena= S.nextLine();
-            informacion.add(contrasena);
-            }
-        else{
-            System.out.println("Ingrese tarjeta de credito");
-            tarjeta=S.nextLine();
-            informacion.add(tarjeta);
-            System.out.println("Ingrese fecha de caducidad:");
-            fechCaducidad=S.nextLine();
-            informacion.add(fechCaducidad);
-            System.out.println("Ingrese Fecha de nacimiento:");
-            fechaNacimiento = S.nextLine();
-            informacion.add(fechaNacimiento);
-            System.out.println("Ingrese contrasena:");
-            contrasena= S.nextLine();
-            informacion.add(contrasena);
-        }
+        Edad();
+        if(fechaNacimiento>=18){
+            ValidarMail();
+            validarUsuario();
+            validarGenero();
+            UsuarioPremium up=new UsuarioPremium();
+            System.out.println("Ingrese tipo de usuario:");
+            tipoUsuario=S.nextLine().toLowerCase();
         
+            if(tipoUsuario.equals("premium")){
+                informacion.add(tipoUsuario);
+                System.out.println("Ingrese tarjeta de credito");
+                tarjeta=S.nextLine();
+                informacion.add(tarjeta);
+                System.out.println("Ingrese fecha de caducidad:");
+                fechCaducidad=S.nextLine();
+                informacion.add(fechCaducidad);
+            
+                System.out.println("Ingrese contrasena:");
+                contrasena= S.nextLine();
+                informacion.add(contrasena);
+                }
+            else{
+                informacion.add("Standard");
+                System.out.println("Ingrese contrasena:");
+                contrasena= S.nextLine();
+                informacion.add(contrasena);
+        }
+    }
+        else{
+            System.out.println("Usuario no valido");
+            System.out.println("Usuario menor de 18 anios");
+        }
     }
     
-        
+    //ESTE METODO NO VA A PERMITIR QUE NINGUNA PERSONA MENOR A 18 ANIOS PUEDA CREARSE UNA CUENTA
+    public void Edad(){
+    System.out.println("Ingrese Fecha de nacimiento:");
+            System.out.println("Ingrese anio:");
+            int anio=S.nextInt();
+            System.out.println("Ingrese mes:");
+            int mes=S.nextInt();
+            System.out.println("Ingrese dia:");
+            int dia=S.nextInt();
+            fechaNacimiento=calcular(new GregorianCalendar(anio,mes,dia));
+            //System.out.println(fechaNacimiento);
     
+    }
     
+    // ESTE METODO ME VA A PERMITIR CORRER EL PROGRAMA CON SUS DIFERENTES METODOS 
     public void iniciarSesion(){
         System.out.println("Bienvenidos al programa de citas");
         boolean salir=false;
         int opcion;
-        
         while(!salir){
             System.out.println("1.Crear usuario:");
             System.out.println("2.Iniciar sesion:");
@@ -207,14 +187,13 @@ public class Usuario {
                     salir=true;
                     break;
                 default:
-                    System.out.println("solo numero entre 1 y 3 ");
-                    
+                    System.out.println("solo numero entre 1 y 3 ");    
             }
-        }
-           
-        
+        } 
     }
     
+    
+   //ESTE METODO SE VA A ENCARGAR QUE CADA CORREO QUE SE INGRESE ESTE BIEN ESCRITO Y NO ESTE REPETIDO 
   public boolean ValidarMail() {
     // Patron para validar el email
    boolean validacion=true;
@@ -242,27 +221,74 @@ public class Usuario {
             System.out.println("Ingrese Email de nuevo");
         }
    }
-  
     Scanner S=new Scanner(System.in);
-    
     return validacion;
     }
-
+  
+  //ESTE METODO ME VA A PERMITIR CLASIFICAR DE QUE GENERO ES CADA PERSONA
  public void validarGenero(){
+    boolean val= true;
     Scanner S=new Scanner(System.in);
-    System.out.println("Que genero es:");
-    genero=S.nextLine().toUpperCase();
-    if(genero=="masculino".toUpperCase()){
-        informacion.add(genero);
-        
-    }
-    else{
-        genero="femenino";
-        informacion.add(genero);
-    }   
- }
+    while(val ==  true){
+        System.out.println("Que genero es:");
+        genero=S.nextLine().toUpperCase();
 
+        if(genero.equals("MASCULINO")){
+            informacion.add(genero);
+            
+            break;
+        }
+        if(genero.equals("FEMENINO")){
+            informacion.add(genero);
+            break;
+        }  
+        else{
+            System.out.println("ERROR");
+            System.out.println("Genero permitito (Masculino/Femenino)");
+        }
+    }
+    
+ }
+ // ESTE METODO ME VA A PERMITIR QUE SE CALCULE LA EDAD DE LAS PERSONAS
+ 
+     public static int calcular(Calendar fechaNac) {
+
+        Calendar fechaActual = Calendar.getInstance();
+
+ 
+
+        // Cálculo de las diferencias.
+
+        int years = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
+
+        int months = fechaActual.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
+
+        int days = fechaActual.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
+
+ 
+
+        // Hay que comprobar si el día de su cumpleaños es posterior
+
+        // a la fecha actual, para restar 1 a la diferencia de años,
+
+        // pues aún no ha sido su cumpleaños.
+
+ 
+
+        if(months < 0 // Aún no es el mes de su cumpleaños
+
+           || (months==0 && days < 0)) { // o es el mes pero no ha llegado el día.
+
+            years--;
+
+        }
+
+        return years;
+
+    }
+    
 }
        
 
        
+
