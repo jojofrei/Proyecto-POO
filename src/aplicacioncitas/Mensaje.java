@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 public class Mensaje {
     
     protected String mensaje;
-    protected Usuario emisor;
-    protected Usuario receptor;
-    //private Usuario receptor;
+    
+    protected Perfil emisor;
+    
     
 
     public String getMensaje() {
@@ -24,44 +24,35 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    public Usuario getEmisor() {
-        return emisor;
-    }
-
-    public void setEmisor(Usuario emisor) {
-        this.emisor = emisor;
-    }
-
-    public Usuario getReceptor() {
-        return receptor;
-    }
-
-    public void setReceptor(Usuario receptor) {
-        this.receptor = receptor;
-    }
     
     
-
-    
-    public void enviarmensaje( Usuario emizor ){
-      int tamanoList= emizor.usuariosI.size();
+    public void enviarmensaje( Perfil emisor){
+        //determino el tamano de la lista de personal interesadas en el
+      int tamanoList= emisor.getPerfiles().size();
       Scanner teclado= new Scanner (System.in);
       int indicev ;
+      //imprimo todos los perfiles de las personas interesadas 
     for(int i=0;i<=tamanoList;i++){
         //muestros los nombre de los usuarios interesados
-        System.out.println((i+1)+" "+emizor.usuariosI.get(i));
+        System.out.println((i+1)+" "+emisor.getPerfiles().get(i));
     }
+    //determino el indice de la persona de interes
       indicev= teclado.nextInt()-1;
-      receptor=emizor.usuariosI.get(indicev);
+      Perfil receptor=emisor.getPerfiles().get(indicev);
       //el mensaje lo ingresamos directamente a la lista mensajes en usuario
       mensaje=JOptionPane.showInputDialog("Ingrese mensaje:"); 
       //aqui se ingrresa el mensaje a una lista deonde se guardan los mensajes
-      receptor.mensajes.add(indicev, mensaje);
-      
+      receptor.getUser().mensajes.add(indicev, mensaje);
+                 
     
     }
+
+    
   
     
     
-    
+ 
 }
+
+
+

@@ -19,27 +19,27 @@ public class Buzon {
     
     
     
-    public void vermensajes(Usuario usuario, Usuario interes){
+    public void vermensajes(Perfil usuario, Perfil interes){
       //determino el tamano de la lista de personas interesadas en este usuario
-      int tamanoList= usuario.usuariosI.size();
+      int tamanoList= usuario.getPerfiles().size();
       Scanner teclado= new Scanner (System.in);
       
       int opcion;
       //muestro a las personas interesadas junto con su lugar en la lista
       for(int i=0;i<=tamanoList;i++){
-        System.out.println((i+1)+" "+usuario.usuariosI.get(i));
+        System.out.println((i+1)+" "+usuario.perfiles.get(i));
       }
      
       for(int i=0;i<1;i++){
         opcion = teclado.nextInt();
         //el usuario que es de interes
-        interes= usuario.usuariosI.get(opcion-1);
-        System.out.println("De:"+ interes.getNombre());
+        interes= usuario.getPerfiles().get(opcion-1);
+        System.out.println("De:"+ interes.user.nombre);
         
-        System.out.println(usuario.mensajes.get(opcion-1));
+        System.out.println(interes.user.mensajes);
         System.out.println("Mensaje del sistema:");
         
-        System.out.println("contacta con "+ interes.getNombre() +"al correo"+interes.getEmail());
+        System.out.println("contacta con "+ interes.user.nombre+"al correo"+interes.user.email);
         Scanner salida=new Scanner(System.in);
         String valor=salida.nextLine();
         if(valor!=null){

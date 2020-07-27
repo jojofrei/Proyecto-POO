@@ -16,17 +16,17 @@ import java.util.regex.Pattern;
  * @author jojofrei
  */
 public class Usuario {
-    private String email;
-    private String nombre;
-    private String fechaNacimiento;
-    private String contrasena;
-    private String genero;
-    private String tipoUsuario;
-    private String tarjeta;
-    private String fechCaducidad;
-    ArrayList<String> informacion = new ArrayList<>();
-    ArrayList<Usuario> usuariosI = new ArrayList<>();
-    ArrayList<String> mensajes = new ArrayList<>();
+    protected String email;
+    protected String nombre;
+    protected String fechaNacimiento;
+    protected String contrasena;
+    protected String genero;
+    protected String tipoUsuario;
+    protected String tarjeta;
+    protected String fechCaducidad;
+    protected ArrayList<String> informacion = new ArrayList<>();
+    protected ArrayList<Usuario> usuariosI = new ArrayList<>();
+    protected ArrayList<String> mensajes = new ArrayList<>();
     
     
     

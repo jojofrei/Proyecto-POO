@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  * @author jojofrei
  */
 public class Perfil {
-    private Usuario user;
-    private ArrayList<String> interesesuser;
-    private ArrayList<Perfil> perfiles;
-    private ArrayList<String> respuestasuser;
+    protected Usuario user;
+    protected ArrayList<String> interesesuser;
+    protected ArrayList<Perfil> perfiles;
+    protected ArrayList<String> respuestasuser;
     
 
     public Perfil(Usuario user) {
