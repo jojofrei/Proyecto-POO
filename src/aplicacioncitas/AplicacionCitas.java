@@ -84,5 +84,6 @@ public class AplicacionCitas {
             String answer = respuesta.nextLine();
             p.getRespuestasUser().add(answer);
         }
+        
     }
 }

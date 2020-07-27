@@ -22,8 +22,8 @@ import java.util.GregorianCalendar;
  * @author jojofrei
  */
 public class Usuario {
-    private String email;
-    private String nombre;
+    protected String email;
+    protected String nombre;
     private int fechaNacimiento;
     private String contrasena;
     private String genero;
@@ -31,6 +31,7 @@ public class Usuario {
     private String tarjeta;
     private String fechCaducidad;
     ArrayList<String> informacion = new ArrayList<>();
+    ArrayList<String> mensajes = new ArrayList<>();
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, int fechaNacimiento, String contrasena) {
         this.email = email;
