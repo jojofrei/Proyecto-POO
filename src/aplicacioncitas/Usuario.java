@@ -3,11 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacioncitas;
 import java.util.Scanner;
 //import java.util.Date;
@@ -22,16 +17,19 @@ import java.util.GregorianCalendar;
  * @author jojofrei
  */
 public class Usuario {
+
+    protected int fechaNacimiento;
     protected String email;
     protected String nombre;
-    private int fechaNacimiento;
-    private String contrasena;
-    private String genero;
-    private String tipoUsuario;
-    private String tarjeta;
-    private String fechCaducidad;
-    ArrayList<String> informacion = new ArrayList<>();
-    ArrayList<String> mensajes = new ArrayList<>();
+    protected String contrasena;
+    protected String genero;
+    protected String tipoUsuario;
+    protected String tarjeta;
+    protected String fechCaducidad;
+    protected ArrayList<String> informacion = new ArrayList<>();
+    protected ArrayList<Usuario> usuariosI = new ArrayList<>();
+    protected ArrayList<String> mensajes = new ArrayList<>();
+
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, int fechaNacimiento, String contrasena) {
         this.email = email;
@@ -107,7 +105,10 @@ public class Usuario {
         }
         return validacion;
     }
-    
+    @Override
+    public String toString() {
+        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + '}';
+    }
     
  
     Scanner S=new Scanner(System.in);
@@ -192,14 +193,13 @@ public class Usuario {
             }
         } 
     }
-    
-    
-   //ESTE METODO SE VA A ENCARGAR QUE CADA CORREO QUE SE INGRESE ESTE BIEN ESCRITO Y NO ESTE REPETIDO 
-  public boolean ValidarMail() {
+
+    //ESTE METODO SE VA A ENCARGAR QUE CADA CORREO QUE SE INGRESE ESTE BIEN ESCRITO Y NO ESTE REPETIDO 
+    public boolean ValidarMail() {
     // Patron para validar el email
-   boolean validacion=true;
-   Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-   while (validacion == true){
+    boolean validacion=true;
+    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+    while (validacion == true){
         Scanner S=new Scanner(System.in);
         
         System.out.println("Ingrese Email:");
@@ -221,13 +221,13 @@ public class Usuario {
         else{
             System.out.println("Ingrese Email de nuevo");
         }
-   }
+    }
     Scanner S=new Scanner(System.in);
     return validacion;
     }
   
-  //ESTE METODO ME VA A PERMITIR CLASIFICAR DE QUE GENERO ES CADA PERSONA
- public void validarGenero(){
+    //ESTE METODO ME VA A PERMITIR CLASIFICAR DE QUE GENERO ES CADA PERSONA
+    public void validarGenero(){
     boolean val= true;
     Scanner S=new Scanner(System.in);
     while(val ==  true){
@@ -249,47 +249,26 @@ public class Usuario {
         }
     }
     
- }
- // ESTE METODO ME VA A PERMITIR QUE SE CALCULE LA EDAD DE LAS PERSONAS
+}
+    // ESTE METODO ME VA A PERMITIR QUE SE CALCULE LA EDAD DE LAS PERSONAS
  
      public static int calcular(Calendar fechaNac) {
 
         Calendar fechaActual = Calendar.getInstance();
 
- 
-
         // Cálculo de las diferencias.
-
         int years = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
-
         int months = fechaActual.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
-
         int days = fechaActual.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
-
- 
-
         // Hay que comprobar si el día de su cumpleaños es posterior
-
         // a la fecha actual, para restar 1 a la diferencia de años,
-
         // pues aún no ha sido su cumpleaños.
 
- 
-
         if(months < 0 // Aún no es el mes de su cumpleaños
-
            || (months==0 && days < 0)) { // o es el mes pero no ha llegado el día.
-
             years--;
-
         }
-
         return years;
-
     }
     
 }
-       
-
-       
-
