@@ -106,7 +106,10 @@ public class Usuario {
         }
         return validacion;
     }
-    
+    @Override
+    public String toString() {
+        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + '}';
+    }
     
  
     Scanner S=new Scanner(System.in);
