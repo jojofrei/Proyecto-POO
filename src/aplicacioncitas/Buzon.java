@@ -30,7 +30,7 @@ public class Buzon {
         System.out.println((i+1)+" "+usuario.perfiles.get(i));
       }
      
-      for(int i=0;i<1;i++){
+      for(int i=0;i<=1;i++){
         opcion = teclado.nextInt();
         //el usuario que es de interes
         interes= usuario.getPerfiles().get(opcion-1);
@@ -44,7 +44,9 @@ public class Buzon {
         String valor=salida.nextLine();
         if(valor!=null){
             i++;
+        break;
         }
+       
       }
     }
     
