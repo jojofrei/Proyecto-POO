@@ -20,10 +20,13 @@ public class ListaRespuesta extends ArrayList {
 	generaLista();
     }
 
+    /*Como el nombre lo indica el metodo generaLista va a genera una lista con 
+    las opciones que tiene para responder por cada pregunta*/
+    
     public void generaLista() {
         
         switch(bloque) {
-	// Aqui van las respuestas
+	// Aqui van las opciones de respuestas
         case 0:
 	this.add("1.Salir a comer");
 	this.add("2.Ver peliculas");
