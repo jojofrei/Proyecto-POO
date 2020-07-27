@@ -53,7 +53,7 @@ public class ListaRespuesta extends ArrayList {
         this.add("1.Confianza");
 	this.add("2.Honestidad");
 	this.add("3.Respeto");
-        this.add("3.Todas las anteriores");
+        this.add("4.Todas las anteriores");
 	break;
 				
 	case 5:

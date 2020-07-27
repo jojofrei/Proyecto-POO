@@ -19,16 +19,20 @@ public class AplicacionCitas {
     static ArrayList<Perfil> allperfil = new ArrayList<>();
     
     public static void main(String[] args) {
+        System.out.println(" **** Bienvenid@ a la aplicación de citas **** ");
         Pregunta.llenarDatos();
+        System.out.println(" -- Información del usuario 1 -- ");
         Perfil p1 = generarPerfil();
         allperfil.add(p1);
         llenarListas(p1);
+        System.out.println(" -- Información del usuario 2 -- ");
         Perfil p2 = generarPerfil();
         allperfil.add(p2);
         llenarListas(p2);
-        //Perfil p3 = generarPerfil();
-        //allperfil.add(p3);
-        //llenarListas(p3);
+        System.out.println(" -- Información del usuario 3 -- ");
+        Perfil p3 = generarPerfil();
+        allperfil.add(p3);
+        llenarListas(p3);
         
         for(int i=0; i<allperfil.size(); i++){
             Perfil pr1 = allperfil.get(i);
@@ -37,12 +41,18 @@ public class AplicacionCitas {
                 pr1.buscarPareja(pr2);  
             }
         }
+        for(int i=0; i<allperfil.size(); i++){
+            Perfil pr1 = allperfil.get(i);
+            for(int j=i+1; j<allperfil.size(); j++){
+                Perfil pr2 = allperfil.get(j);
+                pr1.superLike(pr2);  
+            }
+        }
         System.out.println(" ");
         System.out.println("... Perfiles con los que hizo match ...");
         for(Perfil p :p1.getPerfiles()){
             System.out.println(p.getUser().toString());
         }
-        
     }
 
     /*Este método generarPerfil me permitira producir un perfil, inmediatamente 

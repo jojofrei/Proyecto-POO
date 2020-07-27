@@ -17,10 +17,9 @@ import java.util.GregorianCalendar;
  * @author jojofrei
  */
 public class Usuario {
-
-    protected int fechaNacimiento;
     protected String email;
     protected String nombre;
+    protected int fechaNacimiento;
     protected String contrasena;
     protected String genero;
     protected String tipoUsuario;
@@ -29,7 +28,6 @@ public class Usuario {
     protected ArrayList<String> informacion = new ArrayList<>();
     protected ArrayList<Usuario> usuariosI = new ArrayList<>();
     protected ArrayList<String> mensajes = new ArrayList<>();
-
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, int fechaNacimiento, String contrasena) {
         this.email = email;
@@ -107,7 +105,7 @@ public class Usuario {
     }
     @Override
     public String toString() {
-        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + '}';
+        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", edad=" + fechaNacimiento + ", genero=" + genero + '}';
     }
     
  
@@ -116,12 +114,11 @@ public class Usuario {
     //ESTE METODO SE VA A ENCARGAR DE CREAR EL USUARIO, QUE PUEDE SER PREMIUM Y STANDARD
     public void crearUsuario(){
         Scanner S=new Scanner(System.in);
-        Edad();
+        edad();
         if(fechaNacimiento>=18){
-            ValidarMail();
+            validarMail();
             validarUsuario();
             validarGenero();
-            UsuarioPremium up=new UsuarioPremium();
             System.out.println("Ingrese tipo de usuario:");
             tipoUsuario=S.nextLine().toLowerCase();
         
@@ -134,13 +131,13 @@ public class Usuario {
                 fechCaducidad=S.nextLine();
                 informacion.add(fechCaducidad);
             
-                System.out.println("Ingrese contrasena:");
+                System.out.println("Ingrese contraseña:");
                 contrasena= S.nextLine();
                 informacion.add(contrasena);
                 }
             else{
-                informacion.add("Standard");
-                System.out.println("Ingrese contrasena:");
+                informacion.add("standard");
+                System.out.println("Ingrese contraseña:");
                 contrasena= S.nextLine();
                 informacion.add(contrasena);
         }
@@ -152,9 +149,9 @@ public class Usuario {
     }
     
     //ESTE METODO NO VA A PERMITIR QUE NINGUNA PERSONA MENOR A 18 ANIOS PUEDA CREARSE UNA CUENTA
-    public void Edad(){
+    public void edad(){
     System.out.println("Ingrese Fecha de nacimiento:");
-            System.out.println("Ingrese anio:");
+            System.out.println("Ingrese año:");
             int anio=S.nextInt();
             System.out.println("Ingrese mes:");
             int mes=S.nextInt();
@@ -195,7 +192,7 @@ public class Usuario {
     }
 
     //ESTE METODO SE VA A ENCARGAR QUE CADA CORREO QUE SE INGRESE ESTE BIEN ESCRITO Y NO ESTE REPETIDO 
-    public boolean ValidarMail() {
+    public boolean validarMail() {
     // Patron para validar el email
     boolean validacion=true;
     Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -232,20 +229,20 @@ public class Usuario {
     Scanner S=new Scanner(System.in);
     while(val ==  true){
         System.out.println("Que genero es:");
-        genero=S.nextLine().toUpperCase();
+        genero=S.nextLine().toLowerCase();
 
-        if(genero.equals("MASCULINO")){
+        if(genero.equals("masculino")){
             informacion.add(genero);
             
             break;
         }
-        if(genero.equals("FEMENINO")){
+        if(genero.equals("femenino")){
             informacion.add(genero);
             break;
         }  
         else{
-            System.out.println("ERROR");
-            System.out.println("Genero permitito (Masculino/Femenino)");
+            System.out.println("Error");
+            System.out.println("Genero permitito (masculino/femenino)");
         }
     }
     
