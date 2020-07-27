@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author jojofrei
  */
-public class UsuarioPremium {
+public class UsuarioPremium extends Usuario {
     private String tarjetaCredito;
     private Date fechaCaducidad; 
 

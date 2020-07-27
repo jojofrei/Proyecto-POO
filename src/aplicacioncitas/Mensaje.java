@@ -8,9 +8,10 @@ import javax.swing.JOptionPane;
 
 
 public class Mensaje {
-    ArrayList<Usuario> usuarios;
-    private String mensaje;
-    private Usuario emisor;
+    
+    protected String mensaje;
+    protected Usuario emisor;
+    protected Usuario receptor;
     //private Usuario receptor;
     
 
@@ -30,18 +31,31 @@ public class Mensaje {
         this.emisor = emisor;
     }
 
+    public Usuario getReceptor() {
+        return receptor;
+    }
+
+    public void setReceptor(Usuario receptor) {
+        this.receptor = receptor;
+    }
     
-    public void enviarmensaje(Usuario receptor ){
-      int tamanoList= usuarios.size();
+    
+
+    
+    public void enviarmensaje( Usuario emizor ){
+      int tamanoList= emizor.usuariosI.size();
       Scanner teclado= new Scanner (System.in);
       int indicev ;
     for(int i=0;i<=tamanoList;i++){
-        System.out.println((i+1)+" "+usuarios.get(i));
+        //muestros los nombre de los usuarios interesados
+        System.out.println((i+1)+" "+emizor.usuariosI.get(i));
     }
       indicev= teclado.nextInt()-1;
-      mensaje=JOptionPane.showInputDialog("Ingrese mensaje:");
+      receptor=emizor.usuariosI.get(indicev);
       //el mensaje lo ingresamos directamente a la lista mensajes en usuario
-      //receptor.mensajes.set(indicev, mensaje);
+      mensaje=JOptionPane.showInputDialog("Ingrese mensaje:"); 
+      //aqui se ingrresa el mensaje a una lista deonde se guardan los mensajes
+      receptor.mensajes.add(indicev, mensaje);
       
     
     }

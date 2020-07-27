@@ -24,6 +24,8 @@ public class Usuario {
     private String tarjeta;
     private String fechCaducidad;
     ArrayList<String> informacion = new ArrayList<>();
+    ArrayList<Usuario> usuariosI = new ArrayList<>();
+    ArrayList<String> mensajes = new ArrayList<>();
     
     
     
