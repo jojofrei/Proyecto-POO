@@ -3,11 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacioncitas;
 import java.util.Scanner;
 //import java.util.Date;
@@ -22,15 +17,17 @@ import java.util.GregorianCalendar;
  * @author jojofrei
  */
 public class Usuario {
-    private String email;
-    private String nombre;
-    private int fechaNacimiento;
-    private String contrasena;
-    private String genero;
-    private String tipoUsuario;
-    private String tarjeta;
-    private String fechCaducidad;
-    ArrayList<String> informacion = new ArrayList<>();
+    protected String email;
+    protected String nombre;
+    protected int fechaNacimiento;
+    protected String contrasena;
+    protected String genero;
+    protected String tipoUsuario;
+    protected String tarjeta;
+    protected String fechCaducidad;
+    protected ArrayList<String> informacion = new ArrayList<>();
+    protected ArrayList<Usuario> usuariosI = new ArrayList<>();
+    protected ArrayList<String> mensajes = new ArrayList<>();
     
     public Usuario(String email, String nombre,String genero,String tarjeta,String fechCaducidad,String tipoUsuario, int fechaNacimiento, String contrasena) {
         this.email = email;
@@ -291,7 +288,3 @@ public class Usuario {
     }
     
 }
-       
-
-       
-
