@@ -25,6 +25,11 @@ public class Pregunta {
     public Pregunta(String pregunta) {
         this.pregunta=pregunta;
     }
+    
+    /*Este metodo llenarDatos, me añadira a la lista preguntas las preguntas
+    con sus respectivas opciones de respuesta, haciendo uso de los objeto Pregunta 
+    y ListaRespuesta*/
+    
     public static void llenarDatos(){
         preguntas.add(new Pregunta("1.¿Qué te gusta hacer en tu tiempo libre?:", new ListaRespuesta(0)));
         preguntas.add(new Pregunta("2.¿Cuáles son tus temas de interés en una conversación?:", new ListaRespuesta(1)));
